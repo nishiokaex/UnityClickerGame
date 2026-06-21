@@ -26,7 +26,7 @@ Unity -batchmode -quit -projectPath . -executeMethod CodexWebGLBuild.Build
 
 ## GitHub Pages への自動公開
 
-`main` ブランチへ push されると、`.github/workflows/deploy-pages.yml` により WebGL ビルドを作成し、GitHub Pages へ公開します。
+`main` ブランチへ push されると、`.github/workflows/deploy-pages.yml` により WebGL ビルドを作成し、[GitHub Pages](https://nishiokaex.github.io/UnityClickerGame/) へ公開します。
 
 GitHub 側では次の設定が必要です。
 
