@@ -42,7 +42,7 @@ jobs:
           buildMethod: CodexWebGLBuild.Build
 
       - name: Disable Jekyll
-        run: touch Build/.nojekyll
+        run: sudo touch Build/.nojekyll
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
