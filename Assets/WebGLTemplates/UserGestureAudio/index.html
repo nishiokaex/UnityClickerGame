@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity Web Player | {{{ PRODUCT_NAME }}}</title>
+    <style>
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+        text-align: center;
+        background: #231f20;
+      }
+
+      #unity-canvas {
+        width: {{{ WIDTH }}}px;
+        height: {{{ HEIGHT }}}px;
+        background: #231f20;
+      }
+
+      #start-button {
+        position: fixed;
+        inset: 0;
+        z-index: 10;
+        display: grid;
+        place-items: center;
+        width: 100%;
+        height: 100%;
+        border: 0;
+        color: #ffffff;
+        background: #231f20;
+        font: 600 24px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="start-button" type="button">Start</button>
+    <canvas id="unity-canvas" width={{{ WIDTH }}} height={{{ HEIGHT }}} tabindex="-1"></canvas>
+    <script src="Build/{{{ LOADER_FILENAME }}}"></script>
+    <script>
+      const canvas = document.querySelector("#unity-canvas");
+      const startButton = document.querySelector("#start-button");
+      let unityStarted = false;
+
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        const meta = document.createElement("meta");
+        meta.name = "viewport";
+        meta.content = "width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes";
+        document.getElementsByTagName("head")[0].appendChild(meta);
+
+        canvas.style.width = "100%";
+        canvas.style.height = "100%";
+        canvas.style.position = "fixed";
+        document.body.style.textAlign = "left";
+      }
+
+      function startUnity() {
+        if (unityStarted) {
+          return;
+        }
+
+        unityStarted = true;
+        startButton.disabled = true;
+        startButton.style.display = "none";
+
+        createUnityInstance(canvas, {
+          arguments: [],
+          dataUrl: "Build/{{{ DATA_FILENAME }}}",
+          frameworkUrl: "Build/{{{ FRAMEWORK_FILENAME }}}",
+          codeUrl: "Build/{{{ CODE_FILENAME }}}",
+          streamingAssetsUrl: "StreamingAssets",
+          companyName: "{{{ COMPANY_NAME }}}",
+          productName: "{{{ PRODUCT_NAME }}}",
+          productVersion: "{{{ PRODUCT_VERSION }}}",
+        }).catch((message) => {
+          alert(message);
+        });
+      }
+
+      startButton.addEventListener("click", startUnity, { once: true });
+      startButton.addEventListener("touchend", startUnity, { once: true });
+    </script>
+  </body>
+</html>

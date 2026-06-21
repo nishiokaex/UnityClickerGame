@@ -667,7 +667,7 @@ PlayerSettings:
   webGLDebugSymbols: 0
   webGLEmscriptenArgs: 
   webGLModulesDirectory: 
-  webGLTemplate: APPLICATION:Minimal
+  webGLTemplate: PROJECT:UserGestureAudio
   webGLAnalyzeBuildSize: 1
   webGLUseEmbeddedResources: 0
   webGLCompressionFormat: 0
