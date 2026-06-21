@@ -1,0 +1,12 @@
+.screen {
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(18, 22, 30);
+}
+
+.ok-button {
+    width: 160px;
+    height: 48px;
+    font-size: 20px;
+}

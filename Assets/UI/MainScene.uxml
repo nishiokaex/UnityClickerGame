@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <Style src="MainScene.uss" />
+    <ui:VisualElement name="root" class="screen">
+        <ui:Button name="ok-button" text="OK" class="ok-button" />
+    </ui:VisualElement>
+</ui:UXML>
